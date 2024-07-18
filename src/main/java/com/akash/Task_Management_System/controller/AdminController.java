@@ -2,6 +2,7 @@ package com.akash.Task_Management_System.controller;
 
 import com.akash.Task_Management_System.dto.TaskDto;
 import com.akash.Task_Management_System.service.AdminService;
+import jakarta.annotation.security.PermitAll;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ public class AdminController {
     private final AdminService adminService;
 
     @GetMapping("/users")
+    @PermitAll
     public ResponseEntity<?> getUsers(){
         return ResponseEntity.ok(adminService.getUsers());
     }
@@ -30,6 +32,7 @@ public class AdminController {
     }
 
     @GetMapping("/tasks")
+    @PermitAll
     public ResponseEntity<?> getAllTasks(){
         return ResponseEntity.ok(adminService.getAllTasks());
     }

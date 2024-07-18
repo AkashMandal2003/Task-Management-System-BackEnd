@@ -3,6 +3,7 @@ package com.akash.Task_Management_System.controller;
 
 import com.akash.Task_Management_System.dto.TaskDto;
 import com.akash.Task_Management_System.service.EmployeeService;
+import jakarta.annotation.security.PermitAll;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ public class EmployeeController {
     private final EmployeeService employeeService;
 
     @GetMapping("/tasks")
+    @PermitAll
     public ResponseEntity<List<TaskDto>> getTaskByUserId(){
         return ResponseEntity.ok(employeeService.getTaskByUserId());
     }
